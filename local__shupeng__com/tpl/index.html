@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+<link href="{{ handler.static_dev("lib/pure.css") }}" rel="stylesheet" type="text/css">
+<link href="{{ static_url("style.css") }}" rel="stylesheet" type="text/css">
+<script src="{{ handler.static_dev("lib/jquery.min.js") }}" type="text/javascript"></script>
+</head>
+<body>
+<section id="main">{% raw content %}</section>
+{% if handler.settings["debug"] %}
+  <script src="{{ handler.static_dev("lib/debug.js") }}" type="text/javascript"></script>
+{% end %}
+
+{#
+  <script src="{{ static_url("local.js") }}" type="text/javascript"></script>
+#}
+</body>
+</html>
