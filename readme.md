@@ -1,5 +1,8 @@
 virtualenv(wrapper)
 ===
+
+[tutorial][virtualenvwrapper]
+
 auto switch python environment
 
     source /usr/local/bin/virtualenvwrapper.sh
@@ -34,6 +37,7 @@ auto switch python environment
 
 dnsmasq
 ===
+
 [dnsmasq][] set up *.dev domain to localhost
 
     # /etc/dnsmasq.conf
@@ -59,7 +63,7 @@ fontend
 ===
 
 ## javascript
-  - coffeescript.org
+  - [coffeescript.org][coffee]
   - type-script
 
 example
@@ -85,7 +89,6 @@ example
 - lesscss.org
 - sacss, compass
 
-[stylus]: http://learnboost.github.io/stylus/
 
 example
 
@@ -109,8 +112,8 @@ example
 
 ## template
 
-- jade / [pyjade][]
-- handbar
+- [jade][] / [pyjade][]
+- [handlebars][]
 - mustache.js
 
 example
@@ -154,19 +157,22 @@ example
 
 ##  mvc
 
-- backbonejs.org
+- [backbone][]
+- [meteor][]
 - AngularJS
 - Ember
-- meteor.com
 
-`router`, `data`, `event`
+`router`, `data`, `event`, `sync`
 
 
 tool
 ===
+
 [yanyao's dotfile][dotfile]
 
+
 ## tmux
+
 [tutorial][tmux]
 
 - more than screen
@@ -176,7 +182,8 @@ tool
 - copy/paste buffer (mouse support)
 
 
-## fishshell.com
+## fishshell
+
 [tutorial][fishshell]
 
 - Syntax Highlighting
@@ -200,18 +207,37 @@ tool
     au bufwritepost *.coffee silent execute '!coffee -cm %'
 
 
-## vagrantup.com
+## vagrant
+
+[tutorial][vagrant]
 
     vagrant init precise32 http://files.vagrantup.com/precise32.box
     vagrant up
     vagrant ssh
 
 
+# subscribe
+
+- [coder weekly](http://feeds.feedburner.com/CoderWeeklyArchiveFeed)
+- [python weekly](http://www.pycoders.com)
+- [devops weekly](http://devopsweekly.com)
+- [hacknews daily](http://hnsummaries.com)
+
+
+[dotfile]: https://github.com/yanyaoer/dotfile
 [dnsmasq]: http://blog.evan.pro/how-to-set-up-dynamic-virtual-hosts-for-web-development
 [tmux]: http://linuxtoy.org/archives/from-screen-to-tmux.html
+[virtualenvwrapper]: http://virtualenvwrapper.readthedocs.org
 [fishshell]: http://fishshell.com/tutorial.html
+[vagrant]: http://docs.vagrantup.com/v2/getting-started/index.html
+
 [componet]: http://component.io
 [componet wiki]: https://github.com/component/component/wiki/Components
+[backbone]: http://backbonejs.org
+[meteor]: http://meteor.com
 [flight]: http://twitter.github.io/flight
+[jade]: http://jade-lang.com
 [pyjade]: https://github.com/SyrusAkbary/pyjade
-[dotfile]: https://github.com/yanyaoer/dotfile
+[coffee]: http://coffeescript.org
+[stylus]: http://learnboost.github.io/stylus/
+[handlebars]: http://handlebarsjs.com
