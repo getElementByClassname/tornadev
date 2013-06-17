@@ -1,18 +1,65 @@
 <!doctype html>
 <html>
 <head>
-<link href="{{ handler.static_dev("lib/pure.css") }}" rel="stylesheet" type="text/css">
-<link href="{{ static_url("style.css") }}" rel="stylesheet" type="text/css">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{{ static_url("reveal/css/reveal.css") }}" rel="stylesheet" type="text/css">
+<link href="{{ static_url("reveal/css/theme/default.css") }}" rel="stylesheet" type="text/css">
+<link href="{{ static_url("reveal/lib/css/zenburn.css") }}" rel="stylesheet" type="text/css">
 <script src="{{ handler.static_dev("lib/jquery.min.js") }}" type="text/javascript"></script>
 </head>
 <body>
-<section id="main">{% raw content %}</section>
+<div id="main" class="reveal">
+  <div class="slides">
+  <script type="text/template" data-markdown data-separator="^\n\n\n">
+    {% raw content %}
+  </script>
+  </div>
+</div>
 {% if handler.settings["debug"] %}
   <script src="{{ handler.static_dev("lib/debug.js") }}" type="text/javascript"></script>
 {% end %}
+  <script src="{{ static_url("reveal/lib/js/head.min.js") }}" type="text/javascript"></script>
+  <script src="{{ static_url("reveal/js/reveal.min.js") }}" type="text/javascript"></script>
+  <script>
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+    //  overview: true,
 
-{#
-  <script src="{{ static_url("local.js") }}" type="text/javascript"></script>
-#}
+      theme: Reveal.getQueryHash().theme,
+      transition: Reveal.getQueryHash().transition || 'default',
+
+      dependencies: [
+        { src: '{{ static_url("reveal/lib/js/classList.js") }}', condition: function() { return !document.body.classList; } },
+        { src: '{{ static_url("reveal/plugin/markdown/marked.js") }}', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+       // { src: '{{ static_url("reveal/plugin/markdown/markdown.js") }}',
+        { src: '/static/reveal/plugin/markdown/markdown.js',
+          condition: function() { return !!document.querySelector( '[data-markdown]' ); },
+          callback: function() {
+            Array.prototype.forEach.call(
+              document.querySelectorAll('section > *'),
+              function(ele){
+                if (['H1', 'H2'].indexOf(ele.nodeName) < 0 ) ele.className = 'fragment'; 
+              }
+            )
+          }
+        },
+    //    { src: '{{ static_url("reveal/plugin/highlight/highlight.js") }}', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: '/static/reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: '{{ static_url("reveal/plugin/zoom-js/zoom.js") }}', async: true, condition: function() { return !!document.body.classList; } }
+      ]
+    })
+  </script>
+  <script>
+    Reveal.addEventListener( 'load', function( event ) {
+        // event.currentSlide, event.indexh, event.indexv
+        console.log('123')
+      hljs.initHighlighting();
+    } );
+  </script>
 </body>
 </html>

@@ -9,9 +9,15 @@ class base(_base):
 class index(base):
   def get(self):
     with open('readme.md') as f:
-      md = m.Markdown(m.HtmlRenderer(), extensions=m.EXT_FENCED_CODE)
-      markdown = md.render(f.read())
+      markdown = f.read()
       self.render(content = markdown)
+
+  def _get(self):
+    with open('readme.md') as f:
+      md = m.Markdown(m.HtmlRenderer())
+      res = ''.join('<section>%s</section>' % md.render(section)
+          for section in f.read().split('\n\n\n'))
+      self.render(content = res)
 
 
 router = [

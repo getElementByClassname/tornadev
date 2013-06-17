@@ -2,14 +2,15 @@ $ ->
   node = $('#main > *')
   location = window.location
   i = parseInt(location.hash.replace('#', '')) or 0
+  last_i = 0
 
   toggle_node = ()->
     el = node.eq(i)
     if el.prop('tagName') is 'H1'
       node.hide()
     el.toggle()
-    console.log($('#main').height())
-    $(document).scrollTop($('#main').height())
+    last_i = i
+    # $(document).scrollTop($('#main').height())
 
   $(document).on 'keyup', (e)->
     kc = e.keyCode
@@ -20,7 +21,5 @@ $ ->
     location.hash = i
 
   $(window).on 'hashchange load', ()->
-    #toggle_node()
-    console.log location.hash
-
-  #console.log 'start', node.length, i
+    toggle_node()
+    #console.log location.hash
